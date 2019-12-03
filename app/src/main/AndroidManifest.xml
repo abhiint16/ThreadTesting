@@ -1,17 +1,25 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="com.example.mvvmsamplekotlin">
+        package="com.example.mvvmsamplekotlin">
 
-    <application android:allowBackup="true"
-                 android:name=".MVVMSampleApp"
-                 android:label="@string/app_name"
-                 android:icon="@mipmap/ic_launcher"
-                 android:roundIcon="@mipmap/ic_launcher_round"
-                 android:supportsRtl="true"
-                 android:theme="@style/AppTheme">
+    <application
+            android:name=".MVVMSampleApp"
+            android:allowBackup="true"
+            android:icon="@mipmap/ic_launcher"
+            android:label="@string/app_name"
+            android:roundIcon="@mipmap/ic_launcher_round"
+            android:supportsRtl="true"
+            android:theme="@style/AppTheme">
         <activity android:name=".views.appviews.home.HomeActivity">
-            <intent-filter>
+            <intent-filter >
                 <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                        android:host="www.guru99.com"
+                        android:scheme="https" />
             </intent-filter>
         </activity>
     </application>

@@ -8,11 +8,16 @@ import javax.inject.Inject
 
 @Module
 class ContextModule {
-    @Inject
-    lateinit var context: Context
+    /*@Inject
+    lateinit var context: Context*/
 
     @Provides
     fun providesApplicationContext(application: Application): Context {
         return application
     }
+
+    /*@Provides
+    fun providesName(application: Int): Int {
+        return application
+    }*/
 }
