@@ -24,19 +24,13 @@ class HomeActivityViewModel(dataManager: DataManager) : BaseViewModel(dataManage
     var handler = object : Handler(Looper.getMainLooper()) {
         override fun handleMessage(msg: Message) {
             Log.e("Check for thead400", "${Thread.currentThread()}")
-            var reg = msg.data.getParcelable<RegistrationRequest>("parce")
+            val reg = msg.data.getParcelable<RegistrationRequest>("parce")
             liveDataMeanwhile.value = reg
         }
 
     }
 
     fun sample() {
-
-        /*var thread = object : Thread() {
-            override fun run() {
-                liveData.value = "nlearnMobile"
-            }
-        }*/
 
         customThread.start()
         Thread.sleep(1000)
@@ -55,36 +49,13 @@ class HomeActivityViewModel(dataManager: DataManager) : BaseViewModel(dataManage
 
     override fun before() {
         // update UI for task is starting
-
-        /*handler.post(object : Runnable {
-            override fun run() {
-                Log.e("Check for thead4", "${Thread.currentThread()}")
-                liveDataBefore.value = "Task is Starting ${Thread.currentThread()}"
-            }
-        })*/
-
     }
 
     override fun after() {
-        // update UI for task has finished
-        /*handler.post(object : Runnable {
-            override fun run() {
-                Log.e("Check for thead5", "${Thread.currentThread()}")
-                liveDataAfter.value = "Task is finished ${Thread.currentThread()}"
-            }
-        })
-*/
+        // update UI for task is finished
     }
 
     override fun meanwhile(registrationRequest: RegistrationRequest) {
-        // update UI for task is in progress
-
-        /*handler.post(object : Runnable {
-            override fun run() {
-                Log.e("Check for thead6", "${Thread.currentThread()}")
-                liveDataMeanwhile.value = 0
-            }
-        })*/
 
         val bundle = Bundle()
         bundle.putParcelable("parce", registrationRequest)

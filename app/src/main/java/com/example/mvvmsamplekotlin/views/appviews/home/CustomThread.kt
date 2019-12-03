@@ -20,17 +20,6 @@ class CustomThread(var threadCallback: ThreadCallback) : Thread() {
 
         var m = Looper.myQueue()
 
-        /*Log.e("Check for thead1", "${currentThread()}")
-
-        for (i in 1..10000000) {
-            Log.e("Check for thead2", "${currentThread()}")
-            if (i == 1000000)
-                threadCallback.meanwhile()
-        }
-
-        Log.e("Check for thead3", "${currentThread()}")
-*/
-
         handler = object : Handler() {
 
             override fun handleMessage(msg: Message) {
@@ -50,14 +39,10 @@ class CustomThread(var threadCallback: ThreadCallback) : Thread() {
 
         }
 
-
         Looper.loop()
         threadCallback.after()
 
     }
-
-
-
 
 }
 
