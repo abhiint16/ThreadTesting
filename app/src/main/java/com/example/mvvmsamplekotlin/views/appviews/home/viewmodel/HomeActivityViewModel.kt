@@ -9,8 +9,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.example.mvvmsamplekotlin.datamanager.DataManager
 import com.example.mvvmsamplekotlin.views.appviews.home.CustomThread
-import com.example.mvvmsamplekotlin.views.appviews.home.model.RegistrationRequest
 import com.example.mvvmsamplekotlin.views.appviews.home.ThreadCallback
+import com.example.mvvmsamplekotlin.views.appviews.home.model.RegistrationRequest
 import com.example.mvvmsamplekotlin.views.baseviews.BaseViewModel
 
 class HomeActivityViewModel(dataManager: DataManager) : BaseViewModel(dataManager), ThreadCallback {
