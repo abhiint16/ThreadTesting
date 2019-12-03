@@ -1,9 +1,6 @@
 package com.example.mvvmsamplekotlin.views.appviews.home.viewmodel
 
-import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
-import android.os.Message
+import android.os.*
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -94,5 +91,32 @@ class HomeActivityViewModel(dataManager: DataManager) : BaseViewModel(dataManage
 
     fun observeLivedataMeanwhile(): LiveData<RegistrationRequest> {
         return liveDataMeanwhile
+    }
+}
+
+class MyAsyncTask : AsyncTask<String, String, String>(){
+
+    override fun doInBackground(vararg params: String?): String {
+        return ""
+    }
+
+    override fun onProgressUpdate(vararg values: String?) {
+        super.onProgressUpdate(*values)
+    }
+
+    override fun onPostExecute(result: String?) {
+        super.onPostExecute(result)
+    }
+
+    override fun onCancelled(result: String?) {
+        super.onCancelled(result)
+    }
+
+    override fun onCancelled() {
+        super.onCancelled()
+    }
+
+    override fun onPreExecute() {
+        super.onPreExecute()
     }
 }
