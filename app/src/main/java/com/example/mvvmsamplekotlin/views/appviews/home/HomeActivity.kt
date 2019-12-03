@@ -21,7 +21,7 @@ class HomeActivity : BaseActivity<ActivityHomeBinding, HomeActivityViewModel>() 
     var str2: String? = null
 
     override fun setViewModel(): ViewModel {
-        return ViewModelProviders.of(this).get(HomeActivityViewModel::class.java)
+        return ViewModelProviders.of(this, factory).get(HomeActivityViewModel::class.java)
     }
 
     override val layout: Int
@@ -43,7 +43,7 @@ class HomeActivity : BaseActivity<ActivityHomeBinding, HomeActivityViewModel>() 
     }
 
     override fun setUp() {
-        viewModel.sample()
+        viewModel.sampleThreadPool()
     }
 
     infix fun show(a: Int): Int {

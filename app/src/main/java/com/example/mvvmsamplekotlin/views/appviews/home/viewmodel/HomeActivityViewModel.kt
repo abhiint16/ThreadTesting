@@ -8,6 +8,7 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.example.mvvmsamplekotlin.datamanager.DataManager
+import com.example.mvvmsamplekotlin.views.appviews.apputils.DefaultExecutorSupplier
 import com.example.mvvmsamplekotlin.views.appviews.home.CustomThread
 import com.example.mvvmsamplekotlin.views.appviews.home.ThreadCallback
 import com.example.mvvmsamplekotlin.views.appviews.home.model.RegistrationRequest
@@ -26,6 +27,19 @@ class HomeActivityViewModel(dataManager: DataManager) : BaseViewModel(dataManage
             Log.e("Check for thead400", "${Thread.currentThread()}")
             val reg = msg.data.getParcelable<RegistrationRequest>("parce")
             liveDataMeanwhile.value = reg
+        }
+
+    }
+
+    fun sampleThreadPool() {
+
+        for (i in 1..100) {
+            DefaultExecutorSupplier.getInstance().forBackgroundTasks()
+                .execute(object : Runnable {
+                    override fun run() {
+                        Log.e("test pool","test pool $i ${Thread.currentThread()}")
+                    }
+                })
         }
 
     }
