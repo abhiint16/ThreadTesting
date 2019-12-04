@@ -1,5 +1,7 @@
 package com.example.mvvmsamplekotlin.views.appviews.home
 
+import android.os.Handler
+import android.os.Message
 import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModel
@@ -30,6 +32,28 @@ class HomeActivity : BaseActivity<ActivityHomeBinding, HomeActivityViewModel>() 
     }
 
     override fun setUp() {
+
+        var handler = Handler()
+
+        var runnable = object :Runnable {
+            override fun run() {
+
+            }
+        }
+
+        var msg : Message = Message()
+
+        handler.sendMessage(msg)
+
+        handler.postDelayed(runnable, 5000)
+
+        handler.post(object : Runnable{
+            override fun run() {
+
+            }
+
+        })
+
         viewModel.testFun()
     }
 }
