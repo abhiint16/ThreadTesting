@@ -1,7 +1,10 @@
 package com.example.mvvmsamplekotlin.views.appviews.home
 
 import android.os.Handler
+import android.os.HandlerThread
+import android.os.Looper
 import android.os.Message
+import android.util.Log
 import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModel
@@ -33,27 +36,67 @@ class HomeActivity : BaseActivity<ActivityHomeBinding, HomeActivityViewModel>() 
 
     override fun setUp() {
 
-        var handler = Handler()
+        /*var handler = object : Handler() {
 
-        var runnable = object :Runnable {
+            override fun handleMessage(msg: Message) {
+                //looper.queue.
+            }
+
+        }
+
+        handler.obtainMessage()
+
+
+        var runnable = object : Runnable {
             override fun run() {
 
             }
         }
 
-        var msg : Message = Message()
+        var handlerThread: HandlerThread = HandlerThread("")*/
+
+        var runnable = object : Runnable {
+            override fun run() {
+                Log.e("run running200", "runnbale ${Thread.currentThread()}")
+            }
+        }
+
+        var myThread = MyThread()
+
+        myThread.start()
+        Thread.sleep(1000)
+        myThread.handler.post(runnable)
+
+
+
+
+
+        /*var msg: Message = Message()
+
+        //msg.setCallback()
 
         handler.sendMessage(msg)
 
         handler.postDelayed(runnable, 5000)
 
-        handler.post(object : Runnable{
+        handler.post(object : Runnable {
             override fun run() {
 
             }
 
         })
 
-        viewModel.testFun()
+        viewModel.testFun()*/
+    }
+}
+
+class MyThread : Thread() {
+
+    var handler = Handler()
+
+    override fun run() {
+        Looper.prepare()
+        Log.e("run running100", "runnbale ${currentThread()}")
+        Looper.loop()
     }
 }
