@@ -1,5 +1,7 @@
 package com.example.mvvmsamplekotlin.views.appviews.home
 
+import android.content.Intent
+import android.view.View
 import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModel
@@ -8,7 +10,9 @@ import androidx.lifecycle.ViewModelProviders
 import com.example.mvvmsamplekotlin.R
 import com.example.mvvmsamplekotlin.databinding.ActivityHomeBinding
 import com.example.mvvmsamplekotlin.views.appviews.home.viewmodel.HomeActivityViewModel
+import com.example.mvvmsamplekotlin.views.appviews.secondactivity.SecondActivity
 import com.example.mvvmsamplekotlin.views.baseviews.BaseActivity
+import kotlinx.android.synthetic.main.activity_home.view.*
 import javax.inject.Inject
 
 class HomeActivity : BaseActivity<ActivityHomeBinding, HomeActivityViewModel>() {
@@ -43,7 +47,14 @@ class HomeActivity : BaseActivity<ActivityHomeBinding, HomeActivityViewModel>() 
     }
 
     override fun setUp() {
-        viewModel.sampleThreadPool()
+        //viewModel.sampleAsync()
+        binding.root.btn.setOnClickListener(object : View.OnClickListener {
+            override fun onClick(v: View?) {
+                val intent = Intent(this@HomeActivity, SecondActivity::class.java)
+                startActivity(intent)
+            }
+
+        })
     }
 
     infix fun show(a: Int): Int {

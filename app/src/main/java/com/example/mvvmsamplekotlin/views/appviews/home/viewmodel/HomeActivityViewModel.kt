@@ -10,6 +10,7 @@ import com.example.mvvmsamplekotlin.views.appviews.home.CustomThread
 import com.example.mvvmsamplekotlin.views.appviews.home.ThreadCallback
 import com.example.mvvmsamplekotlin.views.appviews.home.model.RegistrationRequest
 import com.example.mvvmsamplekotlin.views.baseviews.BaseViewModel
+import java.lang.ref.WeakReference
 
 class HomeActivityViewModel(dataManager: DataManager) : BaseViewModel(dataManager), ThreadCallback {
 
@@ -34,7 +35,7 @@ class HomeActivityViewModel(dataManager: DataManager) : BaseViewModel(dataManage
             DefaultExecutorSupplier.getInstance().forBackgroundTasks()
                 .execute(object : Runnable {
                     override fun run() {
-                        Log.e("test pool","test pool $i ${Thread.currentThread()}")
+                        Log.e("test pool", "test pool $i ${Thread.currentThread()}")
                     }
                 })
         }
@@ -92,31 +93,10 @@ class HomeActivityViewModel(dataManager: DataManager) : BaseViewModel(dataManage
     fun observeLivedataMeanwhile(): LiveData<RegistrationRequest> {
         return liveDataMeanwhile
     }
-}
 
-class MyAsyncTask : AsyncTask<String, String, String>(){
-
-    override fun doInBackground(vararg params: String?): String {
-        return ""
-    }
-
-    override fun onProgressUpdate(vararg values: String?) {
-        super.onProgressUpdate(*values)
-    }
-
-    override fun onPostExecute(result: String?) {
-        super.onPostExecute(result)
-    }
-
-    override fun onCancelled(result: String?) {
-        super.onCancelled(result)
-    }
-
-    override fun onCancelled() {
-        super.onCancelled()
-    }
-
-    override fun onPreExecute() {
-        super.onPreExecute()
+    fun sampleAsync() {
+        //MyAsyncTask(this).execute()
+        //MyAsyncTask(this).execute()
     }
 }
+
