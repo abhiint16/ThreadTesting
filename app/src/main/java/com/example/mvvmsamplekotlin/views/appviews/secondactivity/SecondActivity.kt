@@ -45,8 +45,11 @@ class MyAsyncTask() : AsyncTask<Void, Int, Float>() {
 
     override fun onProgressUpdate(vararg values: Int?) {
         super.onProgressUpdate(*values)
+        if (weak.get() == null || weak.get()!!.isFinishing)
+            return
         //strong.text.text = values.get(0).toString()
         weak.get()!!.text.text = values.get(0).toString()
+        //weak.get()!!.findViewById<TextView>(R.id.text).text = values.get(0).toString()
     }
 
     override fun onPostExecute(result: Float?) {
