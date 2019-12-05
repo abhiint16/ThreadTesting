@@ -34,8 +34,16 @@ class HomeActivityViewModel(dataManager: DataManager) : BaseViewModel(dataManage
     fun sampleThreadPool() {
 
         for (i in 1..100) {
-            DefaultExecutorSupplier.getInstance().forBackgroundTasks()
+            var a = DefaultExecutorSupplier.getInstance().forBackgroundTasks()
                 .execute(object : Runnable {
+                    override fun run() {
+                        for (j in 1..100)
+                            Log.e("test pool", "test pool $i && $j ${Thread.currentThread()}")
+                    }
+                })
+
+            var b = DefaultExecutorSupplier.getInstance().forBackgroundTasks()
+                .submit(object : Runnable {
                     override fun run() {
                         for (j in 1..100)
                             Log.e("test pool", "test pool $i && $j ${Thread.currentThread()}")
