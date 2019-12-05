@@ -37,7 +37,8 @@ class HomeActivityViewModel(dataManager: DataManager) : BaseViewModel(dataManage
             DefaultExecutorSupplier.getInstance().forBackgroundTasks()
                 .execute(object : Runnable {
                     override fun run() {
-                        Log.e("test pool","test pool $i ${Thread.currentThread()}")
+                        for (j in 1..100)
+                            Log.e("test pool", "test pool $i && $j ${Thread.currentThread()}")
                     }
                 })
         }

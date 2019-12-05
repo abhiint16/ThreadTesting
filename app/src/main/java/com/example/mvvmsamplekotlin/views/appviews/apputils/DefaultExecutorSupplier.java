@@ -28,7 +28,7 @@ public class DefaultExecutorSupplier {
     /*
      * thread pool executor for main thread tasks
      */
-    private Executor mMainThreadExecutor = null;
+    private Executor mMainThreadExecutor;
     /*
      * an instance of DefaultExecutorSupplier
      */
@@ -55,10 +55,11 @@ public class DefaultExecutorSupplier {
         ThreadFactory backgroundPriorityThreadFactory = new
                 CustomThreadFactory(Process.THREAD_PRIORITY_BACKGROUND);
 
+
         // setting the thread pool executor for mForBackgroundTasks;
         mForBackgroundTasks = new ThreadPoolExecutor(
-                NUMBER_OF_CORES * 2,
-                NUMBER_OF_CORES * 2,
+                2,
+                2,
                 60L,
                 TimeUnit.SECONDS,
                 new LinkedBlockingQueue<Runnable>(),
